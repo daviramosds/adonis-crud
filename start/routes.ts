@@ -24,4 +24,6 @@ Route.group(() => {
   Route.get('/', async () => {
     return { hello: 'world' }
   })
+
+  Route.post('/user', 'UsersController.create')
 }).prefix('/api')
