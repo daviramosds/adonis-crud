@@ -24,4 +24,14 @@ export default class UsersController {
       users: users,
     })
   }
+
+  public async getOne({ request }: HttpContextContract) {
+    console.log(request.param('id'))
+
+    const user = await User.findBy('id', request.param('id'))
+
+    return {
+      user: user,
+    }
+  }
 }
