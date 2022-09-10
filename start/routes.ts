@@ -29,4 +29,5 @@ Route.group(() => {
   Route.get('/users', 'UsersController.getAll')
   Route.get('/users/:id', 'UsersController.getOne')
   Route.put('/users/:id', 'UsersController.update')
+  Route.delete('/users/:id', 'UsersController.delete')
 }).prefix('/api')
