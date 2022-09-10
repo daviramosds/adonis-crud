@@ -26,12 +26,30 @@ export default class UsersController {
   }
 
   public async getOne({ request }: HttpContextContract) {
-    console.log(request.param('id'))
-
     const user = await User.findBy('id', request.param('id'))
 
     return {
       user: user,
     }
+  }
+
+  public async update({ request, response }: HttpContextContract) {
+    const { name, email, password } = request.only(['name', 'email', 'password'])
+
+    const user = await User.findBy('id', request.param('id'))
+
+    if (!user) {
+      return response.status(404).json({ error: 'User not found' })
+    }
+
+    user.name = name
+    user.email = email
+    user.password = password
+
+    await user.save()
+
+    return response.status(201).json({
+      user: user,
+    })
   }
 }
