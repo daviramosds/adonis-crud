@@ -16,4 +16,12 @@ export default class UsersController {
       user: newUser,
     })
   }
+
+  public async getAll({ response }: HttpContextContract) {
+    const users = await User.all()
+
+    return response.status(200).json({
+      users: users,
+    })
+  }
 }

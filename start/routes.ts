@@ -25,5 +25,6 @@ Route.group(() => {
     return { hello: 'world' }
   })
 
-  Route.post('/user', 'UsersController.create')
+  Route.post('/users', 'UsersController.create')
+  Route.get('/users', 'UsersController.getAll')
 }).prefix('/api')
