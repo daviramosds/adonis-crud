@@ -12,8 +12,8 @@ export default class UsersController {
       password,
     })
 
-    return {
+    return response.status(201).json({
       user: newUser,
-    }
+    })
   }
 }
